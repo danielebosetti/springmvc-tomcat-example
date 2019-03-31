@@ -1,20 +1,33 @@
 package beans.server;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 import org.apache.catalina.startup.Tomcat;
 
 public class TomcatWrapper implements StartStopService {
-
+  
   private static final int DEFAULT_PORT = 8080;
+  private static final boolean RUNNING_FROM_ECLIPSE = true;
   private final Tomcat tomcat;
 
   public TomcatWrapper() throws Exception {
     tomcat = new Tomcat();
     tomcat.setPort(DEFAULT_PORT);
-    String webAppDir = System.getProperty("java.io.tmpdir");
-    System.out.printf("webAppDir=%s%n", webAppDir);
-    webAppDir="C:\\bin\\apps\\eclipse-java-2018-12-R-win32-x86_64\\ws\\use-springweb\\target\\classes";
+    
+    String currentDir = System.getProperty("user.dir");
+    System.out.println("currentDir="+currentDir);
+    
+    String webAppDir;
+    
+    if (RUNNING_FROM_ECLIPSE) {
+      webAppDir = Paths.get(currentDir, "target","classes").toAbsolutePath().toString();
+    }
+    else {
+      //TODO
+      throw new RuntimeException();
+    }
+    
     System.out.printf("webAppDir=%s%n", webAppDir);
     tomcat.setBaseDir(webAppDir);
     tomcat.addWebapp("/app", new File(webAppDir).getAbsolutePath());

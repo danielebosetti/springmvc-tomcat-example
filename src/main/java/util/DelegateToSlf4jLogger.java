@@ -58,61 +58,61 @@ public class DelegateToSlf4jLogger implements Log {
 
     @Override
     public void trace(Object message) {
-        logger.debug(String.valueOf(message));
+        logger.debug("{}", message);
     }
 
     @Override
     public void trace(Object message, Throwable t) {
-        logger.debug(String.valueOf(message), t);
+        logger.debug("{}", message, t);
     }
 
     @Override
     public void debug(Object message) {
-        logger.debug(String.valueOf(message));
+        logger.debug("{}", message);
     }
 
     @Override
     public void debug(Object message, Throwable t) {
-        logger.debug(String.valueOf(message), t);
+        logger.debug("{}", message, t);
     }
 
     @Override
     public void info(Object message) {
-        logger.info(String.valueOf(message));
+        logger.info("{}", message);
     }
 
     @Override
     public void info(Object message, Throwable t) {
-        logger.info(String.valueOf(message), t);
+        logger.info("{}", message, t);
     }
 
     @Override
     public void warn(Object message) {
-        logger.warn(String.valueOf(message));
+        logger.warn("{}", message);
     }
 
     @Override
     public void warn(Object message, Throwable t) {
-        logger.warn(String.valueOf(message), t);
+        logger.warn("{}", message, t);
     }
 
     @Override
     public void error(Object message) {
-        logger.error(String.valueOf(message));
+        logger.error("{}", message);
     }
 
     @Override
     public void error(Object message, Throwable t) {
-        logger.error(String.valueOf(message), t);
+        logger.error("{}", message, t);
     }
 
     @Override
     public void fatal(Object message) {
-        logger.error(String.valueOf(message));
+        logger.error("{}", message);
     }
 
     @Override
     public void fatal(Object message, Throwable t) {
-        logger.error(String.valueOf(message), t);
+        logger.error("{}", message, t);
     }
 }
